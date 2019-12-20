@@ -1,1 +1,1 @@
-Bug fixed: Now script can detect invalid interaces
+Bug fixed: Now script can detect invaild interfaces

@@ -25,12 +25,15 @@ def cmd_arguments_acceptor():
 
 (interface, mac) = cmd_arguments_acceptor()
 def regexFunc():
-	extr_mac = subprocess.check_output(["ifconfig", interface])
-	get_mac = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", str(extr_mac))
-	print("Old MAC: ")
-	print("Get mac: ", get_mac)
+	try:
+		extr_mac = subprocess.check_output(["ifconfig", interface])
+		get_mac = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", str(extr_mac))
+		print("Old MAC: ")
+		print("Get mac: ", get_mac)
+		return get_mac.group(0)
 	
-	return get_mac.group(0)
+	except:
+		print("[!] No interface found",interface)
 
 def mac_changer(interface, mac_addr):
 	figlet()
